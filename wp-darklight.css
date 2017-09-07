@@ -1,629 +1,1463 @@
-@-moz-document domain("wikipedia.org") {
-/*@import url(https://fonts.googleapis.com/css?family=Lora);*/
-/* cyrillic */
+/* Splark 2012-2016 */ /* http://userstyles.org/styles/79374 */
+@namespace url(http://www.w3.org/1999/xhtml);
 
-@font-face {
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lora'), local('Lora-Regular'), url(https://fonts.gstatic.com/s/lora/v9/XXbc_aQtUtjJrkp7pYGEKhTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
-    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-/* latin-ext */
+/***********************************************************/
+/******************** Articles (Base) **********************/
+/***********************************************************/
+@-moz-document regexp('https?:\/\/[^?]*(wikipedia|wikimedia|mediawiki|wikibooks|wikidata|wikinews|wikiquote|wikisource|wikiversity|wikivoyage|wiktionary)\.(org|net|com)\/.+')
+{
+  /* pattern: anything on wikiproject domains except the front page */
 
-@font-face {
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lora'), local('Lora-Regular'), url(https://fonts.gstatic.com/s/lora/v9/tHQOv8O1rd82EIrTHlzvmhTbgVql8nDJpwnrE27mub0.woff2) format('woff2');
-    unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
-}
-/* latin */
+/* Layout
+****************************************************************/
 
-@font-face {
-    font-family: 'Lora';
-    font-style: normal;
-    font-weight: 400;
-    src: local('Lora'), local('Lora-Regular'), url(https://fonts.gstatic.com/s/lora/v9/rAXKWvABQNHjPUk26ixVvvesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
-}
-body {
-    border: none !important;
-    font-family: 'Lora', serif !important;
-    font-size: 18px !important;
-    background: #FFF !important;
-}
-#content {
-    margin: 0 auto !important;
-    border: none !important;
-    font-family: 'Lora' !important;
-    font-size: 16px !important;
-    line-height: 80% !important;
-    max-width: 920px !important;
-    background: #FFF !important;
-}
-a {
-    text-decoration: none !important;
-}
-a:hover {
-    text-decoration: underline !important;
-}
-/* top nav */
+  /* Width & justification
+  *********************************/
 
-#mw-page-base {
-    height: 90px !important;
-    margin: 0 auto !important;
-    background: #F0F0F0 !important;
-    /* background: #CAC8C4 !important; */
-}
-#mw-navigation {
-    position: absolute !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-}
-#mw-head {
-    position: relative !important;
-    max-width: 870px !important;
-    height: 90px !important;
-    margin: 0 auto !important;
-}
-#mw-head a,
-#mw-head ul,
-#mw-head li,
-#mw-head span,
-#mw-head .vectorTabs {
-    background: none !important;
-    border: none !important;
-}
-#mw-head > * {
-    position: absolute !important;
-    font-size: 16px !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-#mw-head #left-navigation {
-    top: 50px !important;
-    left: 29px !important;
-    padding: 0 !important;
-}
-#mw-head #right-navigation {
-    top: 50px !important;
-    right: 0 !important;
-    padding: 0 !important;
-}
-#mw-head #p-personal {
-    top: 0px !important;
-    right: 0 !important;
-    padding: 5px 30px 0 0 !important;
-    font-size: 14px !important;
-}
-#mw-head li {
-    opacity: 0 !important;
-    transition: all 0.45s ease-out !important;
-}
-#mw-head:hover li {
-    opacity: 1 !important;
-    transition: all 0.13s ease-in !important;
-}
-#mw-head h3 {
-    opacity: 0 !important;
-    transition: all 0.45s ease-out !important;
-}
-#mw-head:hover h3 {
-    opacity: 1 !important;
-    transition: all 0.13s ease-in !important;
-}
-#mw-head a,
-#mw-head a:visited {
-    color: #556 !important;
-}
-#mw-head #searchform > div {
-    position: absolute !important;
-    top: -32px !important;
-    right: 30px !important;
-    margin-top: 13px !important;
-    margin-left: 15px !important;
-    border: none !important;
-    background: #E8E6E2 !important;
-    width: 345px !important;
-    padding: 0 0 7px !important;
-}
-#mw-head #searchform > div input#searchInput {
-    padding: 8px 0 6px 8px !important;
-}
-#mw-head #p-cactions,
-#mw-head #ca-watch {
-    display: none !important;
-}
-/* logo */
+  #content.mw-body
+  {
+    max-width: 57.5em!important;
+ /* 920px @ 16pt (default, for em calculations) 12.8pt (actual) */
+    min-width: 49.3em!important;
+ /* small, narrow articles look awkward */
+    position: absolute!important;
+  }
 
-#mw-head:before {
-    position: relative !important;
-    width: 120px !important;
-    height: 120px !important;
-    top: 30px !important;
-    left: 10px !important;
-    content: 'Wikipedia' !important;
-    font-family: 'Lora', serif !important;
-    /*font-style: italic !important;*/
+  #bodyContent
+  {
+      /*max-width: 900px!important;*/
+      /*box-shadow: 0px 0px 30px #444!important;*/
+      /* cross-browser support */
+        /*-webkit-box-shadow: 0px 0px 45px #444!important;*/
+      /*padding: 18px 18px 0px 18px!important;*/
+      /*margin-left: 20px!important;*/;
+  }
+
+  #bodyContent p, 
+    #bodyContent dl, 
+    #bodyContent dd, 
+    #bodyContent td, 
+    #bodyContent li
+  {
+    max-width: 46.875em!important;
+ /* 750px @ 16pt */ /* 28em: recommended for newspapers */;
+  }
+
+  #bodyContent blockquote
+  {
+    max-width: 39.5em!important;
+  }
+
+  #mw-content-text
+  {
+    text-align: justify!important;
+      /* text-justify: auto; */ /* deprecated? */;
+  }
+
+  #mw-content-text table
+  {
+    text-align: center!important;
+  }
+
+  /* Box centering
+  *********************************/
+
+  body
+  {
+    max-width: 80em!important;
+ /* 1280px, body @ 16pt */ /* 67.5em : 1080px */
+    margin: auto!important;
+  }
+
+  #mw-head
+  {
+    max-width: 80em!important;
+ /* 1280px */
+    margin: auto!important;
+    left: 0px!important;
+  }
+
+  #mw-panel
+  {
+    position: relative!important;
+    float: left!important;
+  }
+
+    /* Pushes #right-navigation over to the left so it doesn't hang off the edge with the new #content width */
+    #right-navigation,
+    html > body > div.suggestions {
+      position: absolute!important;
+      right: calc(23vw - 8.3rem)!important; /* still at 10.1em at body=80em, and shrinks to avoid colliding buttons */
+    }
+    /* Prevents search bar from hanging off the right once vw gets too wide */
+    @media (min-width: 80em) {
+      #right-navigation {
+        position: absolute!important;
+        right: 10.1rem!important;
+      }
+      html > body > div.suggestions /* behaves differently since body has no 'position:' set, and aligns off of html */
+      {
+        position: absolute!important;
+        right: calc(50vw - 29.3rem)!important;
+      }
+    }
+    #mw-head {
+      /* old version of pushing #right-navigation over; doesn't work with centering */
+      /* max-width: 1150px; */
+      /* left: 0px!important; */;
+}
+  
+    /* centering text * /
+    #bodyContent p {
+      margin: 5.11667px auto 6.4px auto!important;
+    }
+  
+    #bodyContent blockquote {
+      margin: 0px auto 12.8px auto!important;
+    }
+  
+    #bodyContent ul {
+      margin: 3.83333px auto 0px auto!important;
+    }
+  
+    #bodyContent li {
+      margin: 0px auto 1.28333px auto!important;
+    }
+    /* */
+  
+    /* alternate centering text * /
+    #content.mw-body {
+      padding-left: 10em!important; /* padding ignores max-width, runs over * /
+    }
+    /* */
+
+  /* Bottom
+  *********************************/
+
+    /* extra space at bottom of page */
+#content.mw-body:after
+{
+  content: " "!important;
+  height: 6rem!important;
+  position: absolute!important;
+  left: 0px!important;
+  top: 100%!important;
+      /* just in case */
+  width: 100%!important;
+  display: block!important;
+  clear: both!important;
+}
+
+  /* Box restyling
+  *********************************/
+
+    /* removes header white gradient */
+#mw-page-base, #mw-head, #mw-panel
+{
+  background: none!important;
+}
+
+#mw-head-base
+{
+      /* removing border since it stretches across the whole page when #content has a max-width */
+  background: none!important;
+}
+
+    /* removing pseudo-border on "Article" tab */
+#left-navigation #p-namespaces
+{
+  background-image: none!important;
+  padding-left: 0px!important;
+}
+
+#content.mw-body
+{
+  border: none!important;
+  margin-top: 0px!important;
+ /* was at -1, to get nav borders to appear seamless with #content's border-top */
+      box-shadow: 0px 0px 35px rgba(0,0,0,0.8)!important;
+      /* cross-browser support */
+        -webkit-box-shadow: 0px 0px 52.5px rgba(0,0,0,0.8)!important; /* 55px needed for chrome to display the same as 35px */
+      /* border-right: 1px solid rgba(70,170,190,1.0); */
+
+      /* Replacing border removed from header */
+      /* border-top: 1px solid rgb(70,170,190); can't get tabs to z-index above, looks bad */;
+}
+
+  /* Navigation
+  *********************************/
+
+    /* Nav tabs, unselected */
+#left-navigation #p-namespaces li:not(.selected),
+    #left-navigation [id] li:not(.selected),
+    #right-navigation #p-views li:not(.selected),
+    #right-navigation [id] li:not(.selected)
+{
+  background-image: -moz-linear-gradient(bottom, rgb(232,242,248) 0%, rgb(246,246,246) 88%)!important;
+      /* cross-browser support */
+  background-image: linear-gradient(bottom, rgb(232,242,248) 0%, rgb(246,246,246) 88%)!important;
+  background-image: -webkit-linear-gradient(bottom, rgb(232,242,248) 0%, rgb(246,246,246) 88%)!important;
+  background-image: -o-linear-gradient(bottom, rgb(232,242,248) 0%, rgb(246,246,246) 88%)!important;
+  background-image: -ms-linear-gradient(bottom, rgb(232,242,248) 0%, rgb(246,246,246) 88%)!important;
+  border-bottom: 1px solid rgba(168,215,249,1.0)!important;
+  height: 39px!important;
+      /* position: relative!important;
+      bottom: 1px!important; */ /* old method */;
+}
+
+    /* Nav tabs, selected */
+#left-navigation #p-namespaces li.selected,
+    #right-navigation #p-views li.selected,
+    #left-navigation [id] li.selected,
+    #right-navigation [id] li.selected
+{
+      /* position: relative!important; z-index: 9002!important; */ /* z-index not working to supercede content box shadow */
+  background-image: -moz-linear-gradient(bottom, rgb(100%,100%,100%) 15%, rgb(246,246,246) 88%)!important;
+      /* cross-browser support */
+  background-image: linear-gradient(bottom, rgb(100%,100%,100%) 15%, rgb(246,246,246) 88%)!important;
+  background-image: -webkit-linear-gradient(bottom, rgb(100%,100%,100%) 15%, rgb(246,246,246) 88%)!important;
+  background-image: -o-linear-gradient(bottom, rgb(100%,100%,100%) 15%, rgb(246,246,246) 88%)!important;
+  background-image: -ms-linear-gradient(bottom, rgb(100%,100%,100%) 15%, rgb(246,246,246) 88%)!important;
+}
+
+    /* language settings cogwheel */
+#mw-panel #p-lang .uls-settings-trigger
+{
+  float: left!important;
+ /* to prevent from bumping up against content body */;
+}
+
+/* Interactive/dynamic buttons
+****************************************************************/
+
+.mw-editsection a,
+  .collapseButton a,
+  .toctoggle a,
+  .NavToggle a
+{
+  color: inherit!important;
+}
+
+  /* makes the brackets part of the link and extends the hover/click range of the button */
+.mw-editsection, /* negates child "color: inherit"s, but necessary for hiding brackets */
+    .mw-editsection *:not(a)
+{
+  color: transparent!important;
+      /* old; conflicts with new javascript shenanigans */ /*visibility: hidden!important;*/;
+}
+
+.mw-editsection a
+{
+  color: black!important;
+      /* old; conflicts with new javascript shenanigans */ /*visibility: visible!important;*/;
+}
+
+.collapseButton:not(a),
+    .toctoggle:not(a),
+    .NavToggle:not(a)
+{
+  visibility: hidden!important;
+}
+
+.collapseButton a,
+    .toctoggle a,
+    .NavToggle a
+{
+  visibility: visible!important;
+}
+
+  /*
+  .mw-editsection a:before,
+  .collapseButton>a:before,
+  .toctoggle>a:before,
+  .NavToggle>a:before {
+    content: "[";
+  }
+  .mw-editsection a:after,
+  .collapseButton>a:after,
+  .toctoggle>a:after,
+  .NavToggle>a:after {
+    content: "]";
+  }
+  */
+
+.mw-editsection a,
+  .collapseButton a,
+  .toctoggle a,
+  .NavToggle a
+{
+  padding: 5px!important;
+  background-color: rgba(50%,50%,50%,0.21)!important;
+  border-radius: 5px!important;
+}
+
+/* References
+****************************************************************/
+
+  /* Inline notes, footnote numbers, and tooltips
+  *****************************************/
+
+  /* "Citation needed" */
+    /* removes brackets */
+sup.Template-Fact, sup.Inline-Template
+{
+  visibility: hidden!important;
+}
+
+sup.Template-Fact i a span,
+    sup.Inline-Template span
+{
+  visibility: visible!important;
+  background-color: rgba(245,241,140,1.0)!important;
+ /* Darker yellow: 216,203,2 */
+  border-radius: 7px 3px 7px 3px / 7px 3px 7px 3px!important;
+  padding: 0px 4px 0px 3px!important;
+  margin-left: -3px!important;
+}
+
+  /* Inline citations */
+sup.reference a
+{
+  color: rgba(0,0,0,0.6)!important;
+      /* makes references easier to hover over... slight problems with multiple references in the same spot */
+  padding: 7px 7px 7px 7px!important;
+  margin: -7px -5px -7px -7px!important;
+ /* -5 to allow stacks to have semi-normal mouseover behavior and separation without completely removing left & right margins */
+  border-radius: 10px!important;
+  z-index: 4!important;
+  position: relative!important;
+ /* seems to be required or link's extra space from padding often yields to other text -- note: reference tooltips are set at 5 */
+        /* for troubleshooting   background-color: rgba(50%,50%,50%,0.3)!important;*/
+    }
+    sup.reference a span {
+      display:none!important; /* removes brackets */
+    }
+      /* restoration for infobox - citations often confusing with exponents */
+      .infobox sup.reference a span {
+        display:inline!important;
+      }
+      /*.infobox sup.reference:first-of-type {
+        margin-left: 10px!important;
+      }*/
+
+    /* citation tooltip text */
+    .referencetooltip .reference-text {
+      font-size: 1.28em!important;
+      line-height: 1.5em!important;
+    }
+    /* reference tooltips, external links icon */
+    .referencetooltip a.external {
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAVklEQVR4Xn3PgQkAMQhDUXfqTu7kTtkpd5RA8AInfArtQ2iRXFWT2QedAfttj2FsPIOE1eCOlEuoWWjgzYaB/IkeGOrxXhqB+uA9Bfcm0lAZuh+YIeAD+cAqSz4kCMUAAAAASUVORK5CYII=")!important;
+      background-repeat: no-repeat!important;
+      background-position: 100% 50%!important;
+      padding-right: 13px!important;
+    }
+    /* reference tooltips, pdf icon */
+    .referencetooltip a.external[href$=".pdf"] {
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/2/23/Icons-mini-file_acrobat.gif")!important;
+      background-repeat: no-repeat!important;
+      background-position: 100% 50%!important;
+      padding-right: 18px!important;
+    }
+
+  /* References list
+  *****************************************/
+
+    /* References and bottom-of-page navigation */
+    .reflist,
+    .navbox,
+    #catlinks {
+      background-color: rgba(0,0,0,0.18)!important;
+    }
+
+    /* References' margins become noticeable with background */
+  .reflist {
+      padding: 10px 15px 15px 0px!important;
+}
+
+    /* Backlinks */
+      /* carets */
+.references .mw-cite-backlink b a
+{
+  padding: 3px 5px 0px 5px !important;
+  background-color: rgba(0%,0%,0%,0.09)!important;
+  border-radius: 5px!important;
+}
+      /* lettered sublinks */
+.references .mw-cite-backlink a sup
+{
+  padding: 1px 5px 2px 5px !important;
+  background-color: rgba(0%,0%,0%,0.09)!important;
+  border-radius: 5px!important;
+}
+
+/* Search results
+****************************************************************/
+
+.searchdidyoumean
+{
+  font-style: italic!important;
+}
+
+.searchdidyoumean:after
+{
+  content: " ?";
+}
+
+  /* search results header */
+.mw-search-formheader
+{
+  border-top: 1px dashed rgba(50%,50%,50%,0.66)!important;
+  border-right: 1px dashed rgba(50%,50%,50%,0.66)!important;
+  border-left: 1px dashed rgba(50%,50%,50%,0.66)!important;
+  border-bottom-width: 0px!important;
+  background-image: -moz-linear-gradient(bottom, rgb(100%,100%,100%) 0%, rgb(246,246,246) 100%)!important;
+    /* cross-browser support */
+  background-image: linear-gradient(bottom, rgb(100%,100%,100%) 0%, rgb(246,246,246) 100%)!important;
+  background-image: -webkit-linear-gradient(bottom, rgb(100%,100%,100%) 0%, rgb(246,246,246) 100%)!important;
+  background-image: -o-linear-gradient(bottom, rgb(100%,100%,100%) 0%, rgb(246,246,246) 100%)!important;
+  background-image: -ms-linear-gradient(bottom, rgb(100%,100%,100%) 0%, rgb(246,246,246) 100%)!important;
+}
+
+.searchresults
+{
+  margin-left: 3em!important;
+}
     
-    font-weight: normal !important;
-    font-size: 28px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0px !important;
-    color: #777 !important;
+  /* green page data at bottom */
+.searchresults li .mw-search-result-data
+{
+  color: inherit!important;
+  font-family: courier new!important;
 }
-/* left nav */
+    
+  /* emphasizing first result */
+.searchresults li:first-of-type .mw-search-result-heading
+{
+  font-size: 2em!important;
+  margin-bottom: 4px!important;
+}
 
-#mw-navigation #mw-panel {
-    position: fixed !important;
-    font-size: 18px !important;
-    top: 0px !important;
-    left: -255px !important;
-    width: 160px !important;
+.searchresults li:first-of-type
+{
+  background-color: rgba(50%,50%,50%,0.14)!important;
+  padding: 10px 6px 6px 10px!important;
+  margin-left: -10px!important;
+ /* realignment */
+  margin-bottom: 9px!important;
+  border-radius: 13px!important;
+}
+
+/* commons.wikimedia image page
+****************************************************************/
+  
+#filetoc
+{
+  background-color: transparent!important;
+}
+
+#file.fullImageLink > a:first-of-type > img
+{
+  margin: 20px auto!important;
+  display: block!important;
+ /* won't center without this */
+  }
+
+  #stockphoto_base {
+    position: relative!important;
+    left: 0px!important;
+    top: 0px!important;
+  }
+
+  #stockphoto_base>* {
+    width: auto!important;
+    display: inline!important;
+  }
+
+  .mw-filepage-resolutioninfo,
+  #langselectorcontainer,
+  .fullMedia {
+    margin-top: 8px!important;
+    font-size: 1em!important;
+  }
+
+  .fullMedia {
+    padding-bottom: 35px!important;
+  }
+
+  .fullMedia,
+  .fullMedia * {
+    margin: auto!important;
+    text-align: center!important;
+  }
+  
+  /* "Full resolution" link (always?) */
+    /* .mw-filepage-other-resolutions a:last-of-type {} */
+    .fullMedia a.internal {
+      font-size: 1.7em!important;    
+    }
+
+/* Cleanup
+****************************************************************/
+
+  #siteSub, /* "from wikipedia, the free encyclopedia */
+  .thumbcaption .magnify, /* redundant "enlarge" button */
+  #footer
+    {display:none!important;}
+
+/* Opacity
+****************************************************************/
+
+  /* header nav opacity */
+  #left-navigation,
+  #right-navigation > div:not(#p-search),
+  #p-search input#searchInput,
+  #p-personal {
+    opacity: 0.4!important;
+  }
+  #left-navigation:hover,
+  #right-navigation > div:not(#p-search):hover,
+  #p-search input#searchInput:hover,
+  #p-search input#searchInput:focus,
+  #p-personal:hover {
+    opacity: 1.0!important;
+  }
+  /* disabled: instead, gradient on nonselected ul's creates opacity effect
+  .mw-editsection [class*=editsection],
+  li#ca-edit,
+  li#ca-talk,
+  li#ca-history {
+    opacity: 0.3!important;
+  } */
+  /* left column nav opacity */
+  #mw-panel {
+    opacity: 0.1!important;
+}
+
+#mw-panel:hover
+{
+  opacity: 1.0!important;
+}
+
+  /* "Edit" buttons, toggle buttons */
+.mw-editsection a,
+  .toctoggle a
+{
+  opacity: 0.33!important;
+}
+
+.mw-editsection a:hover,
+  .mw-editsection a:focus,
+  .toctoggle a:hover,
+  .toctoggle a:focus
+{
+  opacity: 1.0!important;
+}
+
+/* Transitions (misc)
+****************************************************************/
+
+#mw-panel
+{
+  transition: 0.4s 0.35s!important;
+}
+
+.mw-editsection a,
+  .toctoggle a
+{
+  transition: 0.15s 0.35s!important;
+}
+
+/* Other restyling
+****************************************************************/
+
+body
+{
+  background-image: none!important;
+}
+
+body *::selection
+{
+  background-color: rgba(51,153,255,0.35) !important;
+ /* or: rgba(28%,28%,28%,0.17) */;
+}
+
+body *::-moz-selection
+{
+  background-color: rgba(51,153,255,0.35) !important;
+ /* or: rgba(28%,28%,28%,0.17) */;
+}
+
+.dablink, /* disambiguation */
+  .rellink /* main article */ /* includes: .relarticle.mainarticle .boilerplate.seealso */
+{
+  border-left: 7px solid rgba(131,191,188,1.0)!important;
+ /* */
+  margin-left: 20px!important;
+  padding-left: 10px!important;
+}
+
+.collapseButton a:hover,
+  .toctoggle a:hover,
+  .NavToggle a:hover,
+  sup.Template-Fact i a span,
+  sup.Inline-Template span,
+  p sup *
+{
+  text-decoration: none!important;
+}
+
+sup.Template-Fact i a span,
+  sup.Inline-Template span,
+  p sup:not(.reference) *
+{
+  color: rgba(0,0,0,0.6)!important;
+ /* Greyish yellow: 120,110,0  Light yellow: 216,203,2 */;
+}
+
+  /* IPA
+  ********************/
+.IPA,
+    .SAMPA, /* on wiktionary */
+    .enPR /* on wiktionary */
+{
+  font-size: 1.15em!important;
+}
+
+.IPA, .IPA *,
+    .SAMPA, .SAMPA *, /* on wiktionary */
+    .enPR, .enPR * /* on wiktionary */
+{
+  letter-spacing: 2px!important;
+      /* color: inherit!important; */
+  border: none!important;
+ /* underline */;
+}
+
+#content.mw-body p:first-of-type .nowrap *,
+    #content.mw-body .IPA *
+{
+  color: rgba(55%,55%,55%,1.0)!important;
+}
+
+#content.mw-body p .IPA *:hover,
+    #content.mw-body p:first-of-type .IPA *:hover /* specificity override */
+{
+  color: black!important;
+}
+
+#editform textarea
+{
+  padding: 5px 8px!important;
+}
+
+  /* Spacing
+  ****************************************************************/
+
+h1#firstHeading
+{
+      /* prevents h1 separator (border-bottom) from touching text */
+  padding-bottom: 0.1em!important;
+}
+
+#coordinates
+{
+      /* prevents from touching h1 separator */
+  padding-top: 8px!important;
+}
+
+
+
+}
+                                /*_ - ~ ~ .
+                            .-¯¯·.·.·.·.·.·¯ -..
+                          .''·'·'·'·'·'·'·'·'·'·`.
+           .-~~^-.       /·.·.·.·.·.·.·.·.·.·.·.·.\
+         .'  O    \     /·'·'·'·'·'·'·'·'·'·'·'·\·'\
+        (_____,    `._.'·.·.·.·.·.·.·.·|         } ·\      A rare sweatered Dherposaurus
+          `-U-.        '·'       }'·'·'|        /·'·'\
+               `-.      |       /·.·.·.|       /· ·   `. 
+                  ¯`-.__|      /_'-'~'·|      /-'_'     `.. 
+                        |     /_/      |     /_/   ¯-.     `-.
+                        |____/         |____/          ~ - .*/
+
+
+
+/***********************************************************/
+/******************** Portals (Base) ***********************/
+/***********************************************************/
+@-moz-document regexp('https?:\/\/[^?]*(wikipedia|wikimedia|mediawiki|wikibooks|wikidata|wikinews|wikiquote|wikisource|wikiversity|wikivoyage|wiktionary)\.(org|net|com)\/wiki\/Portal.+') {
+  /* pattern: wikiproject pages continuing from /wiki/Portal... */
+
+/* #content.mw-body #bodyContent #mw-content-text table */
+
+  #mw-content-text table div,
+  #mw-content-text table p {
+    text-align: justify!important;
+  }
+
+  /* Edit buttons - not tagged the same as for articles */
+  #content a[href*="&action=edit"] {
+    opacity: 0.5!important;
+    transition: 0.15s 0.35s!important;
+  }
+  #content a[href*="&action=edit"]:hover {
+    opacity: 1.0!important;
+  }
+  #content a[href*="&action=edit"]:before {
+    content: "["!important;
+    color: white!important;
+  }
+  #content a[href*="&action=edit"]:after {
+    content: "]"!important;
+    color: white!important;
+  }
+
+
+
+}
+
+
+
+/***********************************************************/
+/******************** Front Page (Base) ********************/
+/***********************************************************/
+@-moz-document regexp('https?:\/\/[^?]*(wikipedia|wiktionary|wikibooks|wikinews|wikiversity|wikiquote)\.(org|net|com)\/(?!.)') {
+  /* pattern: wikiproject front pages (for sites where the front page exists and does not redirect to a subpage) */
+
+/* Global
+****************************************************************/
+
+  body {
+    height: 100vh !important;
+    margin: 0px !important;
+    background-color: white!important;
+    background-repeat: no-repeat!important;
+    background-attachment: scroll!important;
+  }
+
+  body > .survey-banner-bumper {
     height: 100% !important;
-    overflow-y: auto !important;
-    padding: 0 0 0 100px !important;
-    background: #E8E6E2 !important;
-    box-shadow: 1px 0 3px rgba(0, 0, 0, 0.25) !important;
-    transition: all 0.66s ease-in-out !important;
-    opacity: 0 !important;
-}
-#mw-navigation #mw-panel:hover {
-    left: -100px !important;
-    transition: all 0.2s ease-in-out !important;
-    opacity: 1 !important;
-}
-#mw-navigation #mw-panel a {
-    color: #445 !important;
-}
-#mw-navigation #p-navigation,
-#mw-navigation .first {
-    margin-bottom: 0 !important;
-    margin-top: 7px !important;
-}
-#mw-navigation #p-lang:before {
-    content: "" !important;
-    font-size: 0 !important;
-    display: inline-block !important;
-    height: 0px !important;
+  }
+
+/* Header
+****************************************************************/
+
+  body .central-textlogo,
+  body #wm-home-header,
+  body#www-wikiquote-org #bodyContent > div:first-of-type {
+    /*background-color: rgba(100%,100%,100%,0.57)!important;*/
+    background-repeat: no-repeat!important;
+    background-position: center center!important;
+    margin-top: 0px !important;
+    margin-left: auto!important;
+    margin-right: auto!important;
+    padding-top: 40px !important;
+    border-radius: 12px!important;
+  }
+
+  /* Responsive vanish
+  *********************************/
+    .central-featured {
+      max-height: 1000px !important;
+      opacity: 1 !important;
+      transition: 0.4s 0.15s !important;
+    }
+    .search-container {
+      transition: 0.2s 0s !important;
+    }
+  @media (max-height: 750px) {
+    .central-featured {
+      max-height: 0px !important;
+      opacity: 0 !important;
+    }
+    .search-container {
+      margin-top: calc(2.2rem + 15vh) !important;
+    }
+  }
+
+/* Featured languages & icon
+****************************************************************/
+
+  .divTop10item {
+    background-color: transparent!important;
+  }
+
+  /* Font color / Links
+  *********************************/
+
+    /* Central featured */
+
+      /* Level 1 */
+
+        .central-featured-lang a,
+        .divTop10item a,
+        .divTop10item strong a, /* wikiquote */
+        .divTop10item > a, /* wikiversity */
+        #wm-globe-inner strong a /* wikiversity */
+        {
+          color: rgba(00%,00%,00%,0.8)!important;
+        }
+        .central-featured-lang a strong,
+        .divTop10item a strong {
+          color: inherit!important;
+        }
+
+      /* Level 2 */
+
+        .central-featured-lang em,
+        .divTop10item a em,
+        .divTop10item > em, /* wikiquote */
+        #wm-globe-inner em /* wikiversity */
+        {
+          color: rgba(00%,00%,00%,0.66)!important; /* Old: (00%,00%,00%,0.66) */
+          opacity: 0.8!important;
+        }
+        .central-featured-lang>em a /* wikinews */ {
+          color: inherit!important;
+        }
+
+      /* Level 3 */
+
+        .central-featured-lang a small,
+        .central-featured-lang small, /* wikinews */
+        .divTop10item a small,
+        .divTop10item > small, /* wikiquote */
+        #wm-globe-inner em
+        {
+          color: rgba(00%,00%,00%,0.54)!important; /* Old: (00%,00%,00%,0.3) */
+          opacity: 0.6!important;
+        }
+
+    .central-featured-lang,
+    .divTop10item,
+    body#www-wikiversity-org #wm-globe-inner {
+      /* ghetto stroke to restore clarity */
+      text-shadow: rgba(57%,57%,57%,0.20) 1px 1px,
+                   rgba(57%,57%,57%,0.20) -1px -1px,
+                   rgba(57%,57%,57%,0.20) 1px -1px,
+                   rgba(57%,57%,57%,0.20) -1px 1px,
+                   rgba(57%,57%,57%,1.00) 0px 0px 5px
+      !important;
+    }
+
+    body[id*="www-"] a:hover, /* specificity override */
+    body[id*="www-"] a:focus /* specificity override */ {
+      color: rgba(6,69,173,1.0)!important;
+      outline: none!important;
+    }
+    
+  /* Hover/focus effects
+  *********************************/
+  
+    .otherprojects a:focus {
+      text-decoration: underline!important;
+    }
+
+    .central-featured-lang a.link-box,
+    .divTop10item a {
+      /* conflicting with specific styles */
+      margin: -5px!important;
+      padding: 5px!important;
+      transition: 0.4s 0.15s!important;
+    }
+    .central-featured-lang a.link-box:hover,
+    .divTop10item a:hover {
+      border-radius: 15px!important;
+      background-color: rgba(100%,100%,100%,0.85)!important;
+      box-shadow: 3px 3px 5px 1px rgba(6,69,173,1.0)!important;
+      /* cross-browser support */
+        -webkit-box-shadow: 3px 3px 7.5px 1.5px rgba(6,69,173,1.0)!important;
+      color: rgba(6,69,173,1.0)!important;
+    }
+    .central-featured-lang a.link-box:focus,
+    .divTop10item a:focus {
+      background-color: rgba(100%,100%,100%,0.95)!important;
+      /* have to be restated to stay */
+        border-radius: 15px!important;
+        box-shadow: 3px 3px 5px 1px rgba(6,69,173,1.0)!important;
+        /* cross-browser support */
+          -webkit-box-shadow: 3px 3px 7.5px 1.5px rgba(6,69,173,1.0)!important;
+      position: relative!important;
+      /* conflicting with specific styles */
+      top: 2px!important;
+      left: 2px!important;
+      /*    
+      box-shadow: 3px 3px 5px 1px rgba(94,122,181,1.0),
+                  3px 3px 5px 1px rgba(94,122,181,1.0) inset !important;
+      /* cross-browser support * /
+        /*-webkit-box-shadow: 3px 3px 7.5px 1.5px rgba(94,122,181,1.0),
+                              3px 3px 7.5px 1.5px rgba(94,122,181,1.0) inset !important;* /
+      */
+    }
+
+  /* Lightening to differentiate small logo from large background logo */
+  .central-featured-logo-inner,
+  #wm-globe-inner,
+  body#www-wikiquote-org #bodyContent > div:nth-of-type(2) > div > div /* wikiquote */
+  {
+    background-color: rgba(100%,100%,100%,0.15)!important;
+    box-shadow: 0px 0px 120px 120px rgba(100%,100%,100%,0.15)!important;
+    /* cross-browser support */
+      -webkit-box-shadow: 0px 0px 180px 180px rgba(100%,100%,100%,0.15)!important;
+    border-radius: 50%!important;
+  }
+
+/* Cleanup
+****************************************************************/
+
+  #search-input .styled-select.js-enabled, /* language dropdown */
+  .wm-site-info ~ div, /* Terms of Service & Privacy Policy */
+  a[href*="wikimediafoundation.org/wiki/Terms_of_Use"], /* Terms of Service & Privacy Policy */
+  a[href*="wikimediafoundation.org/wiki/Privacy_policy"], /* Terms of Service & Privacy Policy */
+  body .search-container label,
+  #searchLanguage,
+  .search-container.language-search,
+  .divider,
+  .langlist,
+  .bookshelf-container,
+  .wm-site-info,
+  hr
+    {display:none!important;}
+
+  /* frontpage html v2 */    
+  #p-search h5,
+  #p-search > form#searchform > fieldset > select,
+  select#language,
+  .divBookshelves,
+  .divArticleTier,
+  .divArticleTierMajor,
+  [class*="project-list"],
+  #divOtherLanguages,
+  #divSiteInfo,
+  body#www-wikibooks-org > div:last-of-type,
+  body#www-wikiversity-org > div:last-of-type,
+  body#www-wikiquote-org > div:last-of-type /* Terms & Privacy pipe | */
+    {display:none!important;}
+
+/* Search
+****************************************************************/
+
+  .search-container, #p-search.portlet {
+    box-shadow: 2px 5px 20px #444!important;
+    /* cross-browser support */
+      -webkit-box-shadow: 2px 7.5px 30px #444!important; /* webkit-box-shadow +50% */
+    padding: 0px!important;
+    margin-bottom: 45px!important;
+    background-color: rgba(255,255,255,0.1)!important;
+    /* to avoid footer blocking search on small viewports */
+    z-index: 9999!important; position: relative!important;
+  }
+
+  form#search-form fieldset {
+    position: relative!important;
+    background-color: transparent!important;
+    border-color: transparent!important;
+    padding: 0px!important;
+    margin: 0px!important;
+  }
+
+  form#search-form fieldset #search-input {
     width: 100% !important;
-    border-top: 1px solid rgba(0, 0, 0, 0.2) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.75) !important;
-}
-#mw-navigation #p-lang {
-    margin-top: -15px !important;
-}
-#mw-navigation #p-lang .uls-settings-trigger {
-    margin-right: 8px !important;
-    margin-top: 6px !important;
-}
-#mw-navigation > #mw-panel > div:not(#p-lang):not(#p-navigation):not(#p-help):not(.first),
-#mw-navigation #p-lang .wbc-editpage {
-    display: none !important;
-}
-/* article */
-/* headlines */
+    margin-right: 0px !important;
+  }
 
-#firstHeading {
-    font-family: 'Lora', serif !important;
-    font-size: 2.7em !important;
-    margin-top: 40px !important;
-    padding-bottom: 5px !important;
-    font-weight: normal !important;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-}
-#bodyContent h1,
-#bodyContent h2,
-#bodyContent h3,
-#bodyContent h4,
-#bodyContent h5,
-#bodyContent h6 {
-    margin-top: 40px !important;
-    margin-bottom: 25px !important;
-    font-family: 'Lora', serif !important;
-    font-weight: normal !important;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) !important;
-}
-#bodyContent h1 span.mw-editsection,
-#bodyContent h2 span.mw-editsection,
-#bodyContent h3 span.mw-editsection,
-#bodyContent h4 span.mw-editsection,
-#bodyContent h5 span.mw-editsection,
-#bodyContent h6 span.mw-editsection {
-    float: right !important;
-    margin-top: 12px !important;
-    font-family: 'Lora', serif !important;
-    text-shadow: none !important;
-}
-span.mw-editsection span.mw-editsection-bracket {
-    display: none !important;
-}
-#bodyContent h2 {
-    font-size: 33px !important;
-}
-#bodyContent h3 {
-    font-size: 30px !important;
-}
-#bodyContent h4 {
-    font-size: 26px !important;
-}
-#bodyContent h5 {
-    font-size: 22px !important;
-}
-#bodyContent h6 {
-    font-size: 20px !important;
-}
-/* numbering of the headings */
-/* via http://userstyles.org/styles/56739/wikipedia-readable-hyphenation */
+  form#search-form fieldset #search-input input#searchInput {
+    width: calc(60% - 56px) !important; /* width of button (53px) plus margin (3px) */
+    position: relative !important;
+    right: calc((56px)/2) !important; /* width of button (53px) plus margin (3px) */
+    margin: 45px 0px!important;
+    color: #333!important;
+    font-family: calibri!important;
+    font-size: 16px!important;
+  }
 
-body {
-    counter-reset: headingOne;
-}
-#toctitle h2:before {
-    content: "" !important;
-    counter-reset: headingOne;
-    padding-right: 0 !important;
-}
-#bodyContent h2:before,
-#bodyContent h3:before,
-#bodyContent h4:before,
-#bodyContent h5:before,
-#bodyContent h6:before {
-    padding-right: 9px;
-    font-family: 'Lora', serif !important;
-    text-shadow: none !important;
-}
-#bodyContent h2 {
-    counter-reset: headingTwo;
-}
-#bodyContent h2:before {
-    counter-increment: headingOne;
-    content: counter(headingOne);
-    font-size: 16px !important;
-}
-#bodyContent h3 {
-    counter-reset: headingThree;
-}
-#bodyContent h3:before {
-    counter-increment: headingTwo;
-    content: counter(headingOne) "." counter(headingTwo);
-    font-size: 15px !important;
-}
-#bodyContent h4 {
-    counter-reset: headingFour;
-}
-#bodyContent h4:before {
-    counter-increment: headingThree;
-    content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree);
-    font-size: 14px !important;
-}
-#bodyContent h5 {
-    counter-reset: headingFive;
-}
-#bodyContent h5:before {
-    counter-increment: headingFour;
-    content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree) "." counter(headingFour);
-    font-size: 13px !important;
-}
-#bodyContent h6 {
-    counter-reset: headingSix;
-}
-#bodyContent h6:before {
-    counter-increment: headingFive;
-    content: counter(headingOne) "." counter(headingTwo) "." counter(headingThree) "." counter(headingFour) "." counter(headingFive);
-    font-size: 12px !important;
-}
-/* article */
+  form#search-form fieldset > button.pure-button {
+    position: absolute !important;
+    display: inline !important;
+    top: calc(50% - (42px)/2) !important; /* vertically centered */
+    right: 20% !important;
+    border-radius: 3px !important;
+  }
 
-#bodyContent .infobox {
-    padding: 9px 16px 5px !important;
-    margin-left: 30px !important;
-}
-#bodyContent #siteSub,
-/* hide Wikipedia byline */
+  /* Deprecated? */
+  button.formBtn, button.searchButton {
+    padding-left: 8px!important;
+    margin-top: 52px!important;
+  }
 
-#bodyContent #mw-fr-revisiontag,
-/* hide revision thingie */
+  /* Search suggestions
+  /* form#search-form fieldset #search-input #typeahead-suggestions
+  *********************************/
 
-#bodyContent #tfd.boilerplate
-/* hide template considered for deletion */
+    #typeahead-suggestions
+      {display:none!important;}
 
+    #typeahead-suggestions .suggestions-dropdown {
+      position: absolute!important;
+      width: 400px !important;
+      bottom: 0px !important;
+      left: 543px !important;
+      opacity: 0.95 !important;
+      box-shadow: 2px 5px 20px #444!important;
+      /* cross-browser support */
+        -webkit-box-shadow: 2px 7.5px 30px #444!important; /* webkit-box-shadow +50% */
+    }
+
+    /* Adjusting for Header's resposive vanish
+    *********************************/
+@media (max-height: 650px)
 {
-    display: none !important;
+  #typeahead-suggestions .suggestions-dropdown
+  {
+    height: auto !important;
+    bottom: auto !important;
+    top: 0px !important;
+  }
 }
-#bodyContent #coordinates {
-    top: -3px !important;
-    padding: 4px 6px 3px !important;
-    background: #E8E6E2 !important;
-    border-radius: 0px !important;
-    border: 1px solid #aaa !important;
-    /* box-shadow: inset 0 1px 0 rgba(255,255,255,0.75), 0 1px 1px rgba(0,0,0,0.25) !important; */
-}
-html[lang="de"] #bodyContent #coordinates
-/* .de fix */
 
+    /* Making links easier to click on
+    *********************************/
+#typeahead-suggestions .suggestion-item
 {
-    top: 53px !important;
-    right: 32px !important;
+  padding: 0px 0px 0px 70px !important;
+ /* removing padding */;
 }
-#bodyContent #protected-icon,
-#bodyContent #good-star,
-#bodyContent #spoken-icon,
-#bodyContent #featured-star {
-    top: -45px !important;
-}
-/* text styles */
 
-#bodyContent {
-    letter-spacing: -0.1px !important;
-}
-#bodyContent p,
-#bodyContent li,
-#bodyContent div.hatnote {
-    font-size: 16px !important;
-    line-height: 26px !important;
-    font-family: 'Lora' !important;
-    letter-spacing: -0.3px !important;
-}
-#bodyContent a:not(.new) {
-    color: #004FD1 !important;
-}
-#bodyContent a:not(.new):visited {
-    color: #4080AB !important;
-}
-#bodyContent .dablink,
-#bodyContent .relarticle,
-#bodyContent .rellink {
-    margin: 7px 0 9px !important;
-    padding: 0 !important;
-    font-size: 14px !important;
-    line-height: 22px !important;
-    color: #333 !important;
-}
-#bodyContent #contentSub
-/* redirected from msg */
-
+#typeahead-suggestions .suggestion-item a.suggestion-link
 {
-    margin: 5px 0 12px -5px !important;
-    padding: 0 !important;
-    font-size: 12px !important;
+  height: 100% !important;
 }
-#bodyContent table.ambox,
-#bodyContent #disambigbox {
-    margin: 0 !important;
-    font-size: 14px !important;
-    line-height: 22px !important;
-}
-#bodyContent #disambigbox {
-    margin: 25px 0 !important;
-}
-#bodyContent .references li {
-    color: #111 !important;
-    font-size: 10px !important;
-    line-height: 17px !important;
-}
-/* boxes */
 
-.messagebox,
-#catlinks,
-.infobox,
-.infobox td,
-table.infobox th,
-#bodyContent div.thumb,
-/* fix the thumbs backgrounds!!! */
-
-.thumbinner,
-div.thumb div,
-code,
-pre,
-.thumbcaption,
-.toccolours,
-.NavFrame,
-.toccolours th,
-.toccolours tbody,
-.NavHead,
-.tright,
-.tleft,
-table,
-.gallery,
-.gallerybox,
-.gallerytext,
-table.gallery,
-table.gallery td,
-#toc,
-.toc,
-.mw-warning,
-div.townBox,
-table.diff,
-td.diff-otitle,
-td.diff-ntitle,
-#imageLicense,
-#filetoc,
-.hintergrundfarbe1,
-.hintergrundfarbe2,
-#hauptseite h2,
-.MainPageBG,
-.noarticletext,
-.quotebox,
-.mw-code {
-    background-color: #E0DEDA !important;
-}
-#content .thumbinner {
-    border-color: #b9b9b9 !important;
-}
-/* noborder test */
-
-#toc,
-.thumbinner,
-.thumbinner .thumbimage,
-.infobox,
-.vertical-navbox,
-.mergedtoprow,
-table.infobox > tbody:first-child > tr:first-child > th,
-.metadata:not(.ambox),
-.mbox-small,
-.quotebox,
-.portal,
-.catlinks,
-.navbox,
-.hintergrundfarbe1,
-table
-/* check this! i added this for "roma" on italian wikipedia */
-
+#typeahead-suggestions .suggestion-item a.suggestion-link .suggestion-text
 {
-    border: none !important;
+  padding: 10px !important;
+  min-height: 50px !important;
+ /* for 70px total height, to match .suggestion-item -- min-height not working on .suggestion-link */;
 }
-#content .thumbinner {
-    padding: 7px !important;
-}
-#bodyContent .ambox {
-    border-width: 0 0 0 5px !important;
-}
-.navbox + .navbox {
-    margin-top: 9px !important;
-}
-/* table of contents */
 
-#toc {
-    padding: 1px 16px 5px !important;
-    font-size: 12px !important;
-}
-#toc #toctitle {
-    margin-top: 7px !important;
-    text-align: left !important;
-    padding-bottom: 0 !important;
-}
-#toc #toctitle h2 {
-    font-family: "Lora", "Lora", sans-serif !important;
-    font-size: 17px !important;
-}
-/* floating toc*/
+/* Footer
+****************************************************************/
 
-#toc .toctoggle {
-    display: none !important;
+  /* Smooth disappearing on short viewports */
+body > .otherprojects
+{
+  max-height: 500px !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+  transition: max-height 0.4s 0s, opacity 0.3s 0.1s !important;
 }
-#toc.toc {
-    padding: 0 !important;
-    font-size: 12px !important;
-    display: block !important;
-    position: fixed !important;
-    bottom: 0 !important;
-    height: 100% !important;
-    right: -200px !important;
-    width: 245px !important;
-    border: none !important;
-    transition: all 0.66s ease-in-out !important;
+
+@media (max-height: 745px)
+{
+  body > .otherprojects
+  {
+    max-height: 0px !important;
     opacity: 0 !important;
-    overflow-y: auto!important;
-    z-index: 9999;
-    background: #646261 !important;
-    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.25) !important;
+    transition: max-height 0.4s 0s, opacity 0.3s 0.1s !important;
+  }
 }
-#toc:hover {
-    right: 0px !important;
-    transition: all 0.15s ease-in-out !important;
-    opacity: 1 !important;
-}
-#bodyContent #toc ul,
-#bodyContent #toc li {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-#bodyContent #toc > ul > li {
-    border-top: 1px solid #797776 !important;
-    border-bottom: 1px solid #535251 !important;
-}
-#bodyContent #toc > ul > li:first-child {
-    border-top: none !important;
-}
-#bodyContent #toc > ul > li:last-child {
-    border-bottom: none !important;
-}
-#bodyContent #toc ul li a {
-    font-size: 18px !important;
-    line-height: 21px !important;
-    color: #EAE9E8 !important;
-    padding: 6px 0 4px !important;
-}
-#bodyContent #toc ul ul li a {
-    font-size: 13px !important;
-    line-height: 17px !important;
-    color: #D0CFCE !important;
-    padding: 4px 0 !important;
-}
-#bodyContent #toc ul li a .tocnumber {
-    font-size: 15px !important;
-    color: #bbb !important;
-    margin-right: 0 !important;
-}
-#bodyContent #toc ul li a .tocnumber:after {
-    content: "." !important;
-}
-#bodyContent #toc ul ul li a .tocnumber {
-    display: none !important;
-}
-#bodyContent #toc ul > li {
-    padding: 0 3px 0 0 !important;
-}
-#bodyContent #toc ul ul ul > li {
-    padding: 0 3px 0 10px !important;
-}
-#bodyContent #toc > ul > li {
-    padding: 3px 3px 3px 13px !important;
-}
-#bodyContent #toc li a[href="#See_also"],
-#bodyContent #toc li a[href="#Notes"],
-#bodyContent #toc li a[href="#References"],
-#bodyContent #toc li a[href="#Bibliography"],
-#bodyContent #toc li a[href="#Further_reading"],
-#bodyContent #toc li a[href="#Documentaries"],
-#bodyContent #toc li a[href="#External_links"] {
-    margin: -3px 0 !important;
-    font-size: 14px !important;
-}
-#bodyContent #toc li a[href="#See_also"] .tocnumber,
-#bodyContent #toc li a[href="#Notes"] .tocnumber,
-#bodyContent #toc li a[href="#References"] .tocnumber,
-#bodyContent #toc li a[href="#Bibliography"] .tocnumber,
-#bodyContent #toc li a[href="#Further_reading"] .tocnumber,
-#bodyContent #toc li a[href="#Documentaries"] .tocnumber,
-#bodyContent #toc li a[href="#External_links"] .tocnumber {
-    display: none !important;
-}
-#bodyContent #toc li a {
-    display: block !important;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
-}
-#bodyContent #toc li a:hover {
-    text-decoration: none !important;
-    color: #fff !important;
-}
-#toc ul li {
-    transition: background 0.2s ease-in-out !important;
-}
-#toc ul li:hover {
-    background: #565453 !important;
-}
-#toc #toctitle {
-    display: none !important;
-}
-/* footer */
 
-#footer {
-    left: 0 !important;
-    right: 0 !important;
-    margin: 0 !important;
-    padding: 15px 0 !important;
-    background-color: #CAC8C4 !important;
+.otherprojects
+{
+  background-color: rgba(255,255,255,0.6)!important;
+  border-top: 1px dashed grey!important;
+  overflow: hidden!important;
+    /* can avoid footer blocking search on small-height viewports by removing 'position' and 'bottom' and setting top margin to ~130px */
+  margin: 00px 0px 0px 0px!important;
+  padding: 10px 0px 0px 0px!important;
+ /* Old: padding: 3px 0px 7px 0px!important; */
+  width: auto!important;
+  position: absolute!important;
+  bottom: 0px!important;
+    /*top: 660px!important;*/
+    /*height: 500px!important;*/;
 }
-#footer-info {
-    max-width: 860px !important;
-    margin: 0 auto !important;
-    font-size: 18px !important;
+
+.otherprojects-item
+{
+  line-height: 1em!important;
+  height: 40px!important;
+  margin: 0px!important;
+    /* for checking layout
+    outline-style: dotted;
+    outline-color: #00ff00;
+    */;
 }
-#footer li:not(#footer-info-lastmod) {
-    display: none !important;
+
+.otherprojects-item div
+{
+  margin-top: 10px!important;
 }
+
+.otherprojects .otherprojects-item:not([id]) a /* not([id]) needed for wiktionary */
+{
+  padding-left: 30%!important;
 }
+
+.otherprojects .otherprojects-item .icon
+{
+    /* to set up for dark mode replacements and wikinews higher-res replacement */
+  background-repeat: no-repeat!important;
+  background-position: center!important;
+}
+
+.otherprojects-item img,
+  .otherprojects-item a /* 'a' required due to dark mode image replacements */
+{
+  margin-right: 4px!important;
+  width: auto!important;
+  height: 25px!important;
+}
+
+  /* footer icons were too large */
+.sprite-project-logos
+{
+    /* can't resize with height because images are one sprite */
+    transform: scale(0.8);
+  }
+
+  /* All footers - Wikinews icon, higher-res */
+    .otherprojects a[href*="wikinews"] .icon img {
+      visibility:hidden!important;}
+    .otherprojects a[href*="wikinews"] .icon {
+      background-image: url("http://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/92px-Wikinews-logo.svg.png")!important;
+      background-size: auto 25px!important;
+      background-repeat: no-repeat!important;
+      background-position: right center!important;
+      /*padding-top: 10px!important; /* working wtf */
+      /*padding-bottom: 10px!important; /* working wtf */
+    }
+
+/* Site-specific images & adjustments
+************************************/
+  /* Wikipedia
+  *******************************/
+    body#www-wikipedia-org {
+      background-image: url('http://i.imgur.com/7jR9o.jpg')!important;
+      background-position: center -70px!important;
+      /* Direct link, for if PNG transparency is needed: http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1000px-Wikipedia-logo-v2.svg.png */
+      /* JPEG at lower opacity: http://i.imgur.com/uq1ih.jpg */
+      /* Old url, larger filesize PNG */
+      /* background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Wikipedia-logo-v2.svg/1000px-Wikipedia-logo-v2.svg.png')!important; */
+      /* overflow:hidden; */ /* failed attempt to fix footer; makes scrollbar always missing */
+    }
+      
+    body#www-wikipedia-org .central-textlogo {
+      width: 186px!important; /* without box shadow: 210px */
+      background-color: rgba(93%,93%,93%,0.6)!important;
+      box-shadow: 0px -3px 16px 16px rgba(93%,93%,93%,0.6)!important;
+      /* cross-browser support */
+        -webkit-box-shadow: 0px -3px 24px 24px rgba(93%,93%,93%,0.6)!important;
+    }
+
+    body#www-wikipedia-org .central-featured-logo {
+      /* position: relative!important; /* old, for .central-featured-logo-inner * /
+      margin: auto!important;
+      top: 57px!important;
+      left: 0px!important; */
+
+      background-image: url('http://upload.wikimedia.org/wikipedia/meta/0/08/Wikipedia-logo-v2_1x.png')!important;
+      background-repeat: no-repeat!important;
+      background-position: center center!important;
+    }
+
+  /* Wikimedia
+  *************************/
+
+  /* Wikibooks
+  *******************************/
+    body#www-wikibooks-org {
+      background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wikibooks-logo.svg/2000px-Wikibooks-logo.svg.png')!important;
+      background-size: 2000px auto!important;
+      background-position: 40% 70px!important;
+    }
+      
+    body#www-wikibooks-org #wm-home-header img {
+      visibility: hidden!important;}
+    body#www-wikibooks-org #wm-home-header {
+      background-image: url('http://i.imgur.com/hL5Piuw.png')!important;
+      background-repeat: no-repeat!important;
+      background-position: center center!important;
+      width: 290px!important;
+    }
+      
+    body#www-wikiversity-org #p-search {
+      background-color: rgba(255,255,255,0.3)!important;
+    }
+    /* search button doesn't vertically align for some reason */
+  body#www-wikibooks-org input.searchButton {
+      margin: 50px 0px!important;
+}
+
+  /* Wikinews
+  *******************************/
+body#www-wikinews-org
+{
+  background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Wikinews-logo.svg/2000px-Wikinews-logo.svg.png')!important;
+  background-size: 2000px auto!important;
+  background-position: center -180px!important;
+}
+
+body#www-wikinews-org .central-textlogo
+{
+  width: 290px!important;
+}
+
+body#www-wikinews-org .central-featured-logo-inner
+{
+  background-color: rgba(100%,100%,100%,0.22)!important;
+  box-shadow: 0px 0px 120px 120px rgba(100%,100%,100%,0.22)!important;
+      /* cross-browser support */
+  -webkit-box-shadow: 0px 0px 180px 180px rgba(100%,100%,100%,0.22)!important;
+}
+
+body#www-wikinews-org .central-featured-lang
+{
+  padding: 0px 7px!important;
+}
+
+body#www-wikinews-org .central-featured-lang
+{
+  transition: 0.4s 0.15s!important;
+}
+
+body#www-wikinews-org .central-featured-lang:hover
+{
+  border-radius: 15px!important;
+  background-color: rgba(100%,100%,100%,0.85)!important;
+  box-shadow: 3px 3px 5px 1px rgba(94,122,181,1.0)!important;
+      /* cross-browser support */
+  -webkit-box-shadow: 3px 3px 7.5px 1.5px rgba(94,122,181,1.0)!important;
+}
+
+body#www-wikinews-org .otherprojects
+{
+  padding-top: 12px!important;
+  padding-bottom: 0px!important;
+}
+      
+  /* Wikiquote
+  *******************************/
+body#www-wikiquote-org
+{
+  background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Wikiquote-logo.svg/2000px-Wikiquote-logo.svg.png')!important;
+  background-size: 2000px auto!important;
+  background-position: -470px -820px!important;
+ /* -796 */;
+}
+
+body#www-wikiquote-org #bodyContent > div:first-of-type img
+{
+  visibility: hidden!important;
+}
+
+body#www-wikiquote-org #bodyContent > div:first-of-type
+{
+  background-image: url('http://i.imgur.com/kJpqWNL.png')!important;
+  background-repeat: no-repeat!important;
+  background-position: center center!important;
+  background-color: rgba(93%,93%,93%,0.9)!important;
+  width: 163px!important;
+  height: 90px!important;
+}
+
+body#www-wikiquote-org #bodyContent > div:nth-of-type(2) > div > div
+{
+  background-color: rgba(100%,100%,100%,0.1)!important;
+  box-shadow: 0px 0px 120px 120px rgba(100%,100%,100%,0.1)!important;
+      /* cross-browser support */
+  -webkit-box-shadow: 0px 0px 180px 180px rgba(100%,100%,100%,0.1)!important;
+}
+
+    /* Extending range of top-10-localizations links
+    *******************/
+body#www-wikiquote-org .divTop10item strong
+{
+        /* background-color: rgba(220,80,80,0.5)!important; */
+  position: absolute!important;
+  height: 100%!important;
+  width: 100%!important;
+  top: 0px!important;
+  left: 0px!important;
+  margin: auto!important;
+}
+
+body#www-wikiquote-org .divTop10item strong a
+{
+        /* background-color: rgba(80,220,80,0.5)!important; */
+  position: relative!important;
+  height: 100%!important;
+  width: 100%!important;
+  float: left!important;
+ /* not sure why this works, but height and width won't fill without it */
+        margin: 0px!important; /* reset/override hover effect */
+        padding: 5px!important;
+      }
+      body#www-wikiquote-org .divTop10item > em {
+        /* background-color: rgba(80,80,220,0.5)!important; */
+        position: relative!important;
+        top: 8px!important;
+        left: 5px!important;
+        pointer-events: none!important;
+      }
+      body#www-wikiquote-org .divTop10item > small {
+        /* background-color: rgba(220,80,220,0.5)!important; */
+        position: relative!important;
+        top: 8px!important;
+        left: 5px!important;
+        pointer-events: none!important;
+      }
+
+    body#www-wikiquote-org #p-search {
+      background-color: rgba(255,255,255,0.3)!important;
+    }
+
+  /* Wikiversity
+  *******************************/
+    body#www-wikiversity-org {
+      background-image: url('http://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Wikiversity-logo.svg/2000px-Wikiversity-logo.svg.png')!important;
+      background-size: 2000px auto!important;
+      background-position: center -163px!important;
+    }
+    body#www-wikiversity-org #wm-home-header img {
+      visibility: hidden!important;}
+    body#www-wikiversity-org #wm-home-header {
+      background-image: url('http://i.imgur.com/SjqFNld.png')!important;
+      background-repeat: no-repeat!important;
+      background-position: center center!important;
+      width: 280px!important;
+    }
+
+    body#www-wikiversity-org #wm-globe-inner {
+      background-color: rgba(100%,100%,100%,0.22)!important;
+      box-shadow: 0px 0px 120px 120px rgba(100%,100%,100%,0.22)!important;
+      /* cross-browser support */
+        -webkit-box-shadow: 0px 0px 180px 180px rgba(100%,100%,100%,0.22)!important;
+    }
+      
+    body#www-wikiversity-org #wm-globe strong {
+      /* background-color: rgba(80,220,80,0.5)!important; */
+      position: absolute!important;
+      height: 50px!important;
+      width: 100%!important;
+      top: 117px!important;
+      left: 0px!important;
+    }
+    body#www-wikiversity-org #wm-globe strong a {
+      /* background-color: rgba(80,80,220,0.5)!important; */
+      position: absolute!important;
+      height: 33px!important;
+      width: 100%!important;
+      top: 0px!important;
+      left: 0px!important;
+      padding-top: 17px!important;
+    }
+    body#www-wikiversity-org #wm-globe em {
+      /* background-color: rgba(80,220,80,0.5)!important; */
+      position: relative!important;
+      top: 1.5em!important;
+      pointer-events: none!important;
+    }
+
+    /* Extending range of top-10-localizations links
+    *******************/
+      body#www-wikiversity-org .divTop10item {
+        /* background-color: rgba(220,80,80,0.5)!important; */
+        position: absolute!important;
+        padding: 5px!important;
+      }
+      body#www-wikiversity-org .divTop10item:not(.lang1) a {
+        /* background-color: rgba(80,220,80,0.5)!important; */
+        position: absolute!important;
+        height: 100%!important;
+        width: 100%!important;
+        float: left!important; /* not sure why this works, but height and width won't fill without it */
+  left: 0px!important;
+  top: 0px!important;
+  margin: 0px!important;
+ /* reset/override hover effect */
+  padding: 5px 0px!important;
+}
+
+body#www-wikiversity-org .divTop10item:not(.lang1) > em
+{
+        /* background-color: rgba(80,80,220,0.5)!important; */
+  position: relative!important;
+  top: 8px!important;
+  pointer-events: none!important;
+}
+      /* english-button's html is different wtf ... 'a' contains 'em' */
+      body#www-wikiversity-org .divTop10item.lang1 a {
+        /* background-color: rgba(80,220,80,0.5)!important; */
+        padding: 5px!important;
+        margin: -5px!important;
+      }
+
+    body#www-wikiversity-org #p-search {
+      background-color: rgba(255,255,255,0.3)!important;
+    }
+
+  /* Wiktionary
+  *******************************/
+    body#www-wiktionary-org {
+      background-image: url('http://i.imgur.com/I2s0a1P.png')!important; /* unextended version: https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Wiktionary-logo-en.svg/2000px-Wiktionary-logo-en.svg.png */
+      background-size: 2000px auto!important;
+      background-position: center -76px!important; /* versions for unextended: -35px -650px -57px */
+    }
+
+    body#www-wiktionary-org .central-textlogo /* actual text */ {
+      color: rgba(0%,0%,0%,1.0)!important;
+      width: 220px!important;
+    }
+
+    body#www-wiktionary-org .central-featured {
+      background-image: url("https://upload.wikimedia.org/wikipedia/meta/f/ff/Wiktionary-logo-en_1x.png")!important;
+      background-repeat: no-repeat!important;
+      background-position: center center!important;
+    }
+    body#www-wiktionary-org .central-featured-logo {
+      display: none!important;
+    }
+    body#www-wiktionary-org .central-featured-logo-inner /* wikimedia removed this element */
+    {
+      /*background-color: rgba(100%,100%,100%,0.5)!important;
+      box-shadow: 0px 0px 120px 120px rgba(100%,100%,100%,0.5)!important;
+      /* cross-browser support * /
+        -webkit-box-shadow: 0px 0px 180px 180px rgba(100%,100%,100%,0.5)!important;
+      */
+    }
+
+    body#www-wiktionary-org .otherprojects {
+      padding: 10px 0px 0px 0px!important;
+    }
+
+
+
+}
+
+
+
+
+
+
+/***********************************************************/
+/************************* Options *************************/
+/***********************************************************/
+
+
+
+/* Hide interactive stuff, option
+******************************************************************/
+/*[[hide-interact-option]]*/
+
+
+
+/* Dark mode, option
+******************************************************************/
+/*[[dark-option]]*/
+
+
+
+
+
