@@ -494,7 +494,10 @@ li#pt-notifications-notice a.mw-echo-notifications-badge {
     transition: 0.6s !important;
 }
 a.new, #p-personal a.new {
-    color: #fd6464 !important;
+    color: #fd6464;
+}
+.client-nojs .ilh-page a.new, .ilh-active .ilh-page a.new {
+    color: #fd6464;
 }
 #footer{
     margin-left: 0 !important;
