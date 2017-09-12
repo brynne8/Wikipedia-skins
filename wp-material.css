@@ -99,7 +99,7 @@
     background-color: transparent !important;
     position: fixed !important;
     top: 0 !important;
-    bottom: 0 !important;
+    height: 64px;
     left: 0 !important;
     padding-left: 0 !important;
     box-sizing: border-box !important;
@@ -150,6 +150,8 @@
 }
 #mw-panel:hover {
     background-color: #fff !important;
+    bottom: 0 !important;
+    height: auto !important;
     width: 200px !important;
     box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
     overflow-y: scroll;
@@ -234,7 +236,11 @@
     pointer-events: auto;
     transition: 0.2s ease !important;
 }
+#p-personal:hover ul {
+    pointer-events: auto;
+}
 #p-personal ul {
+    pointer-events: none;
     padding: 0 !important;
 }
 #p-personal ul li {
