@@ -4,3 +4,4 @@
 * `wp-cleanwhite.css` 原作者AvijitGhosh82，地址https://userstyles.org/styles/124164/wikipedia-clean-white
 * `wp-darklight.css` 原作者Splark，地址https://userstyles.org/styles/79374/wikipedia-dark-light-width-clarity-by-splark
 * `wp-material.css` 原作者Malthe，地址https://userstyles.org/styles/140009/wikipedia-material-updated-12-8-2017
+* `WPClean&minimal.css` 原作者Wolf Lambert，地址https://userstyles.org/styles/103313/wikipedia-clean-minimal
