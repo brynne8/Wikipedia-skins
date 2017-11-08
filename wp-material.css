@@ -302,7 +302,7 @@
 .wikitable tr td,
 .wikitable tr th {
     border: 0 !important;
-    background: transparent !important;
+    background: transparent;
 }
 .wikitable tr:not(:first-child) td,
 .wikitable tr:not(:first-child) th {
