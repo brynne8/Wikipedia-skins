@@ -518,7 +518,8 @@ a.new, #p-personal a.new {
 #ca-nstab-project a,
 #ca-nstab-template a,
 #ca-nstab-image a,
-#ca-nstab-module a {
+#ca-nstab-module a,
+#ca-nstab-category a {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAhElEQVRYR+2XwQrAIAxD7f9/dHfqJazoOtfIiGc1jyQFtUFeRtYfAkgdcHffGY+Z3WqdD5CRr7oTTpYdEEA48LSUeO51BHSA1dLhvv+UcBZBlvk2B+gA6gBGkM01Zv5ZB9oB1IFsDDGKtg5EJG0A6gDNgaownis/SGgAu4Rn9+hrRnfgAng06CGUIx3rAAAAAElFTkSuQmCC") !important;
     background-size: 32px !important;
     background-position: center !important;
