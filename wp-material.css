@@ -526,16 +526,7 @@ a.new,
 }
 
 @-moz-document domain("zh.wikipedia.org") {
-#ca-nstab-main a,
-#ca-nstab-portal a,
-#ca-nstab-special a,
-#ca-nstab-user a,
-#ca-nstab-help a,
-#ca-nstab-project a,
-#ca-nstab-template a,
-#ca-nstab-image a,
-#ca-nstab-module a,
-#ca-nstab-category a {
+#p-namespaces li[id^='ca-nstab-'] a {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAhElEQVRYR+2XwQrAIAxD7f9/dHfqJazoOtfIiGc1jyQFtUFeRtYfAkgdcHffGY+Z3WqdD5CRr7oTTpYdEEA48LSUeO51BHSA1dLhvv+UcBZBlvk2B+gA6gBGkM01Zv5ZB9oB1IFsDDGKtg5EJG0A6gDNgaownis/SGgAu4Rn9+hrRnfgAng06CGUIx3rAAAAAElFTkSuQmCC") !important;
     background-size: 32px !important;
     background-position: center !important;
