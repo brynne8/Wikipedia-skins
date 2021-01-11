@@ -1,4 +1,7 @@
 @-moz-document domain("zh.wikipedia.org") {
+body {
+    overflow-y: hidden;
+}
 #mw-head {
     background: #2196F3 !important;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
@@ -13,9 +16,6 @@
     background: none !important;
     position: absolute !important;
     top: 0 !important;
-}
-#p-namespaces {
-    left: 157px;
 }
 #p-views {
     left: calc(340px + 18px + 500px) !important;
@@ -97,7 +97,6 @@
     background-color: transparent !important;
     position: fixed !important;
     top: 0 !important;
-    height: 64px;
     left: 0 !important;
     padding-left: 0 !important;
     box-sizing: border-box !important;
@@ -113,6 +112,7 @@
     font-weight: bold !important;
     font-size: 13px !important;
     padding: 15px 0 15px 22px !important;
+    margin-left: 0;
 }
 #mw-panel ul {
     padding: 0 !important;
@@ -128,7 +128,7 @@
     font-size: 13px !important;
     letter-spacing: .1px;
     overflow: hidden;
-    padding: 10px 10px 10px 46px;
+    padding: 10px;
     text-overflow: ellipsis;
     white-space: nowrap;
     text-decoration: none;
@@ -177,7 +177,6 @@
 }
 #searchform {
     position: absolute;
-    top: -8px !important;
     margin: 0 !important;
     height: 48px !important;
     width: 100% !important;
@@ -197,6 +196,7 @@
 }
 #searchInput {
     padding: 14px !important;
+    height: 100%;
 }
 #searchInput,
 #searchInput::placeholder {
@@ -212,6 +212,12 @@
     box-sizing: border-box !important;
     width: 64px !important;
     transition: 0.2s ease !important;
+}
+#p-personal .vector-menu-content {
+    display: none;
+}
+#p-personal:hover .vector-menu-content {
+    display: block;
 }
 #p-personal li {
     opacity: 0;
@@ -343,8 +349,8 @@
     opacity: 1 !important;
     margin: 0 !important;
     position: fixed !important;
+    top: 14px;
     right: 64px !important;
-    top: 23px !important;
     font-size: 18px !important;
     font-weight: bold !important;
     color: #fff !important;
@@ -615,7 +621,10 @@ a.new,
 input[type='checkbox'] + label:before {
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAADe0lEQVR4Xu2cO4vVUBSF17ZR8fFPRAQbCxURFBFsLERBYdSf5QMUFAsbG1EQ0cZGEPGfqKA2bsmQyJ3LndydnJOs5GTdZorZyU6+L+s8cocx6EMlYNTuag4JID8EEiABZALk9kqABJAJkNsrARJAJkBurwRIAJkAub0SIAFkAuT2SoAEkAmQ2ysBEkAmQG6vBEgAmQC5vRIgAWQC5PZKQEcB7n4KwAkze9Lx0I3lEtCBorufBPARwDEAN83sRYfDJSAF1gr84/V5PIcEJSBgZQP85qhkCRKwRUAL/CwSJKBFQAB+sgQJ2EdAB/jVGf4CuG9mjwMj2p4SCdhAbCz4VWsJWBMwJnwJIMOXgBUB7n4awDsAzTq/bTjvPeavn1RDEIAa/nsARwOTaDb4SgAZ/uIFMJ/8JmmLHYKmAH+xCZgK/EUKmBL8xQmYGvxFCZgi/MUImCr8RQhw9zMA3jI2WYFNXdkv42r41euFwwEYWXe4gX67JcXuA+YAv1gBc4GfVYC73wHwzcy+ROM3RJ27nwXwGsCR4PnvmdmjYG32sixDkLvfAPAcwA8A58zsa/YrDZxwTk9+tndBK/Abmd8ZEuYIP3kI2gC/ETuqhLnCTxLQAn9VwkUz+xwYPXqXzBl+bwEB+A3QnwAuDCVh7vBTBOwAeADgQODRHURCCfB7C6gOdHeaBHc/Xy81J7vDDTyY6TvhHhIumdmn6MVtqqvhvwFwMHAeyuuFwHX9L0neB3SU8AtANTH3klAa/KQhaNXyGBJKhJ9NQI85oVMSSoWfVcBQEkqGn11ATwlXzOzDEibcTfeYPAnvA67LEvUPgMvrEkp/8rO9jNtvydVxYt4jYSnwBxmCElZHuxLq44tZ52/bEwwyBK1JuAvg4bYLqX//u/55KFhP/TIleI2tZYML6DExR+5r8jvcyE0MPgQlDEdt118M/FEFZEpCUfBHF5AooTj4FAE9JRQJnyago4Ri4VMFBCUUDZ8uYIuE4uFPQkAt4RaApyvfMVfwb5vZs+h6eq51o2zEInDc/RqAl3XtdTN7FTlu7jWTEVAn4Wr1n0fMrPrbzkV8JiVgEcTXblICyNYlQALIBMjtlQAJIBMgt1cCJIBMgNxeCZAAMgFyeyVAAsgEyO2VAAkgEyC3VwIkgEyA3F4JkAAyAXJ7JUACyATI7ZUACSATILf/B0eImXDWV43PAAAAAElFTkSuQmCC") !important;
 }
-div#p-variants
+#left-navigation {
+    margin-left: 10em;
+}
+#p-variants
 {
     position: absolute;
     left: 286px;
@@ -630,7 +639,7 @@ h3#p-variants-label
     background-repeat: no-repeat !important;
 }
 
-#p-variants .menu {
+#p-variants .vector-menu-content-list {
     top: 64px !important;
 }
 
