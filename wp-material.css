@@ -377,8 +377,47 @@ body {
 }
 .portal a,
 #mw-body a,
-.mw-body a {
-    color: #2196F3;
+.mw-body a,
+.client-js #preftoc a {
+    color: #0088dd;
+}
+#content a:hover, a:focus,
+.client-js #preftoc a:hover, .client-js #preftoc a:focus {
+    text-decoration: none;
+    color: #006699;
+}
+.client-js #preftoc {
+    line-height: 1;
+    background: none;
+}
+.client-js #preftoc li {
+    background: none;
+    margin-right: 1em;
+}
+.client-js #preftoc a,
+.client-js #preftoc a:active {
+    padding: 0.5em 0;
+}
+.client-js #preferences {
+    background-color: inherit;
+    border: none;
+}
+#mw-content-text fieldset,
+.client-js #preferences > fieldset {
+    border: solid #eeeeee;
+        border-top-width: medium;
+        border-right-width: medium;
+        border-bottom-width: medium;
+        border-left-width: medium;
+    border-width: 1px 1px 0.2em;
+    padding: 1.25em 1.75em;
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,0.02);
+    line-height: 1.3em;
+    margin: 1em 0;
+}
+.client-js #preftoc li.selected a {
+    background: none;	
+    border-bottom: solid 0.2em #0088dd;
 }
 .thumbcaption {
     padding: 8px !important;
@@ -478,9 +517,14 @@ li#pt-notifications-notice a.mw-echo-notifications-badge {
 .navbox-subgroup {
     background: #ffffff;
 }
+.oo-ui-tagMultiselectWidget-handle {
+    border: none;
+    transition: none;
+}
 #content input {
     border-radius: 0 !important;
     transition: 0.3s box-shadow;
+    border: solid 1px #cccccc;
 }
 #content input[type='checkbox'] + label:before {
     border: 2px solid gray !important;
@@ -510,6 +554,23 @@ li#pt-notifications-notice a.mw-echo-notifications-badge {
     left: calc(50% - 25px) !important;
     transition: 0s !important;
     opacity: 0.7 !important;
+}
+#content input[type="submit"] {
+    padding: 0.25em 1em 0.1em 1em;
+    border: solid 1px #cccccc;
+    border-bottom-width: 1px;
+    border-bottom-width: 0.2em;
+    text-shadow: 0 -1px 0 #cccccc;
+    box-sizing: border-box;
+    border-radius: 0.2em;
+    background: #ffffff;
+    color: #001133;
+    min-height: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    cursor: pointer;
+}
+#content input[type="submit"]:hover {
+    background-color: #eeeeee;
 }
 #content .ui-button-icon-only {
     background: #ccc !important;
